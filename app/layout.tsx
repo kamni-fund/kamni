@@ -54,13 +54,13 @@ export const viewport: Viewport = {
   themeColor: "#2A2D34",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   // Получаем тему из кук
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const theme = getThemeFromRequestOrDefault(cookieStore);
 
   return (

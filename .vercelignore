@@ -1,0 +1,14 @@
+.git
+.next
+node_modules
+.husky
+.github
+README.md
+*.log
+coverage
+.vscode
+.idea
+.DS_Store
+docs
+*.test.*
+vitest.* 

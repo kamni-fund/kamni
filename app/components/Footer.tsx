@@ -31,8 +31,8 @@ const footerNav = [
 
 export default async function Footer() {
   // Получаем текущий язык и переводы из кук или заголовков
-  const cookieStore = cookies();
-  const headersList = headers();
+  const cookieStore = await cookies();
+  const headersList = await headers();
   const acceptLanguage = headersList.get("accept-language") || "";
   const locale = getLocaleFromRequestOrDefault(cookieStore, acceptLanguage);
   const translations = await getTranslations(locale);
