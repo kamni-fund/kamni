@@ -17,6 +17,18 @@ export const metadata: Metadata = {
   authors: [{ name: "KAMNI Family Fund" }],
   creator: "KAMNI Family Fund",
   publisher: "KAMNI Family Fund",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/web-app-manifest-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/web-app-manifest-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png" }],
+    other: [
+      { url: "/web-app-manifest-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/web-app-manifest-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+  },
   openGraph: {
     title: "KAMNI - Семейный фонд",
     description: "Семейный фонд KAMNI занимается накоплением средств для членов семьи",
@@ -24,6 +36,7 @@ export const metadata: Metadata = {
     siteName: "KAMNI Family Fund",
     locale: "ru_RU",
     type: "website",
+    images: [{ url: "/og-image.png" }],
   },
   twitter: {
     card: "summary_large_image",
