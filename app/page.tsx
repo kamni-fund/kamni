@@ -9,8 +9,6 @@ export default function Home() {
       <section>
         <h1 className="text-3xl font-bold text-kamni-yellow mb-4">О Фонде</h1>
 
-        <div className="mb-4 text-gray-400">15.12.2023 18:12</div>
-
         <p className="mb-4">
           Семейный фонд «KAMNI» занимается накоплением средств для членов семьи:
         </p>

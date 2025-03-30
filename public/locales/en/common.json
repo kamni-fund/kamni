@@ -13,10 +13,9 @@
     }
   },
   "footer": {
-    "description": "KAMNI Family Fund is engaged in accumulating funds for family members. In the future, verification in the Montelibero Association.",
+    "description": "KAMNI Family Fund is engaged in accumulating funds for family members.",
     "navigation": "Navigation",
     "contacts": "Contacts",
-    "rights": "© {{year}} KAMNI Family Fund",
     "license": "CC BY-SA 4.0",
     "privacy": "Privacy Policy"
   },

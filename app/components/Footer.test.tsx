@@ -19,6 +19,7 @@ vi.mock("next/headers", () => ({
 // Мокаем модуль i18n
 vi.mock("@/app/lib/i18n", () => ({
   getLocaleFromRequestOrDefault: vi.fn(() => "ru"),
+  getThemeFromRequestOrDefault: vi.fn(() => "dark"),
   getTranslations: vi.fn(() =>
     Promise.resolve({
       header: {

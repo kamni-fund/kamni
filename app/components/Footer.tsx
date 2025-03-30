@@ -5,6 +5,7 @@ import {
   getLocaleFromRequestOrDefault,
   getTranslations,
   getTranslationFunction,
+  getThemeFromRequestOrDefault,
 } from "@/app/lib/i18n";
 import { CreativeCommonsIcon } from "./Icons";
 
@@ -37,14 +38,37 @@ export default async function Footer() {
   const translations = await getTranslations(locale);
   const t = getTranslationFunction(translations);
 
+  // Получаем текущую тему
+  const theme = getThemeFromRequestOrDefault(cookieStore);
+  const isDark = theme === "dark";
+
   return (
-    <footer className="bg-gray-800/30 pt-8 pb-6 mt-auto">
+    <footer
+      data-theme-bg
+      className={
+        isDark
+          ? "bg-gray-800/30 pt-8 pb-6 mt-auto"
+          : "bg-gray-200/50 pt-8 pb-6 mt-auto"
+      }
+    >
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 className="text-kamni-yellow font-bold text-lg mb-4">KAMNI</h3>
-            <p className="text-gray-300 mb-4">{t("footer.description")}</p>
-            <p className="text-sm text-gray-400">{t("header.slogan")}</p>
+            <p
+              data-theme-secondary
+              className={isDark ? "text-gray-300 mb-4" : "text-gray-700 mb-4"}
+            >
+              {t("footer.description")}
+            </p>
+            <p
+              data-theme-secondary
+              className={
+                isDark ? "text-sm text-gray-400" : "text-sm text-gray-500"
+              }
+            >
+              {t("header.slogan")}
+            </p>
           </div>
 
           <div>
@@ -56,7 +80,10 @@ export default async function Footer() {
                 <li key={link.id}>
                   {link.children ? (
                     <>
-                      <span className="text-gray-300">
+                      <span
+                        data-theme-secondary
+                        className={isDark ? "text-gray-300" : "text-gray-700"}
+                      >
                         {t(`header.navigation.${link.id}`)}
                       </span>
                       <ul className="pl-4 mt-1 space-y-1">
@@ -64,7 +91,12 @@ export default async function Footer() {
                           <li key={child.id}>
                             <Link
                               href={child.href}
-                              className="text-gray-400 hover:text-kamni-yellow transition-colors"
+                              data-theme-secondary
+                              className={
+                                isDark
+                                  ? "text-gray-400 hover:text-kamni-yellow transition-colors"
+                                  : "text-gray-500 hover:text-kamni-yellow transition-colors"
+                              }
                             >
                               {t(`header.navigation.${child.id}`)}
                             </Link>
@@ -75,7 +107,12 @@ export default async function Footer() {
                   ) : (
                     <Link
                       href={link.href}
-                      className="text-gray-300 hover:text-kamni-yellow transition-colors"
+                      data-theme-secondary
+                      className={
+                        isDark
+                          ? "text-gray-300 hover:text-kamni-yellow transition-colors"
+                          : "text-gray-700 hover:text-kamni-yellow transition-colors"
+                      }
                     >
                       {t(`header.navigation.${link.id}`)}
                     </Link>
@@ -94,7 +131,12 @@ export default async function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-kamni-yellow transition-colors"
+                    data-theme-secondary
+                    className={
+                      isDark
+                        ? "text-gray-300 hover:text-kamni-yellow transition-colors"
+                        : "text-gray-700 hover:text-kamni-yellow transition-colors"
+                    }
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={
                       link.href.startsWith("http")
@@ -110,13 +152,25 @@ export default async function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 pt-6 flex flex-col sm:flex-row justify-between items-center">
+        <div
+          data-theme-bg
+          className={
+            isDark
+              ? "border-t border-gray-700 pt-6 flex flex-col sm:flex-row justify-between items-center"
+              : "border-t border-gray-300 pt-6 flex flex-col sm:flex-row justify-between items-center"
+          }
+        >
           <div>
             <a
               href="https://creativecommons.org/licenses/by-sa/4.0/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-gray-300 hover:text-kamni-yellow transition-colors"
+              data-theme-secondary
+              className={
+                isDark
+                  ? "flex items-center text-gray-300 hover:text-kamni-yellow transition-colors"
+                  : "flex items-center text-gray-700 hover:text-kamni-yellow transition-colors"
+              }
             >
               <CreativeCommonsIcon className="w-4 h-4 mr-1" />
               <span className="mr-1">{t("footer.license")}</span>

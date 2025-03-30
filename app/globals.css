@@ -5,6 +5,7 @@
 :root {
   --foreground: 255, 255, 255;
   --background: 42, 45, 52;
+  --transition-time: 0.15s;
 }
 
 @layer base {
@@ -17,6 +18,12 @@
 
   a {
     @apply text-kamni-yellow hover:underline;
+  }
+  
+  /* Анимации только для фона, границ и др. (но не для цвета текста) */
+  footer, [data-theme-bg], body {
+    transition: background-color var(--transition-time) ease,
+                border-color var(--transition-time) ease !important;
   }
 }
 

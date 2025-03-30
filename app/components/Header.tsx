@@ -39,6 +39,7 @@ export default async function Header() {
 
   // Получаем текущую тему
   const theme = getThemeFromRequestOrDefault(cookieStore);
+  const isDark = theme === "dark";
 
   // Преобразуем navigationLinks для MobileMenu, добавляя заголовки
   const mobileMenuLinks = navigationLinks.map((link) => ({
@@ -68,20 +69,39 @@ export default async function Header() {
                 {navigationLinks.map((link) => (
                   <li key={link.id} className="relative group">
                     {link.isParent ? (
-                      <span className="text-white hover:text-kamni-yellow transition-colors cursor-default">
+                      <span
+                        data-theme-text
+                        className={
+                          isDark
+                            ? "text-white hover:text-kamni-yellow transition-colors cursor-default"
+                            : "text-gray-800 hover:text-kamni-yellow transition-colors cursor-default"
+                        }
+                      >
                         {t(`header.navigation.${link.id}`)}
                       </span>
                     ) : (
                       <Link
                         href={link.href}
-                        className="text-white hover:text-kamni-yellow transition-colors"
+                        data-theme-text
+                        className={
+                          isDark
+                            ? "text-white hover:text-kamni-yellow transition-colors"
+                            : "text-gray-800 hover:text-kamni-yellow transition-colors"
+                        }
                       >
                         {t(`header.navigation.${link.id}`)}
                       </Link>
                     )}
 
                     {link.children && (
-                      <div className="absolute left-0 mt-2 w-48 bg-kamni-dark border border-gray-700 rounded-md shadow-lg hidden group-hover:block hover:block z-10 pb-2">
+                      <div
+                        data-theme-bg
+                        className={
+                          isDark
+                            ? "absolute left-0 mt-2 w-48 bg-kamni-dark border border-gray-700 rounded-md shadow-lg hidden group-hover:block hover:block z-10 pb-2"
+                            : "absolute left-0 mt-2 w-48 bg-kamni-light border border-gray-300 rounded-md shadow-lg hidden group-hover:block hover:block z-10 pb-2"
+                        }
+                      >
                         {/* Добавляем прозрачную область сверху для лучшего наведения */}
                         <div className="h-2 absolute -top-2 left-0 right-0" />
                         <ul className="py-1">
@@ -89,7 +109,12 @@ export default async function Header() {
                             <li key={child.id}>
                               <Link
                                 href={child.href}
-                                className="block px-4 py-2 text-sm text-white hover:bg-gray-700/30 hover:text-kamni-yellow"
+                                data-theme-text
+                                className={
+                                  isDark
+                                    ? "block px-4 py-2 text-sm text-white hover:bg-gray-700/30 hover:text-kamni-yellow"
+                                    : "block px-4 py-2 text-sm text-gray-800 hover:bg-gray-300/30 hover:text-kamni-yellow"
+                                }
                               >
                                 {t(`header.navigation.${child.id}`)}
                               </Link>
@@ -109,7 +134,16 @@ export default async function Header() {
               <div className="text-kamni-yellow font-medium">
                 {t("header.fund")}
               </div>
-              <div className="text-sm opacity-70">{t("header.slogan")}</div>
+              <div
+                data-theme-secondary
+                className={
+                  isDark
+                    ? "text-sm opacity-70 text-white"
+                    : "text-sm opacity-70 text-gray-700"
+                }
+              >
+                {t("header.slogan")}
+              </div>
             </div>
 
             <div className="flex items-center space-x-1">
