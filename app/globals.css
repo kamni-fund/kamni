@@ -11,9 +11,10 @@
   body {
     color: rgb(var(--foreground));
     background: rgb(var(--background));
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, sans-serif;
   }
-  
+
   a {
     @apply text-kamni-yellow hover:underline;
   }
@@ -23,8 +24,8 @@
   .container {
     @apply max-w-4xl mx-auto px-4;
   }
-  
+
   .pre-block {
     @apply bg-black/50 p-4 rounded overflow-x-auto font-mono text-xs whitespace-pre-wrap break-all;
   }
-} 
+}

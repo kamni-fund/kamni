@@ -1,16 +1,17 @@
-import Link from 'next/link'
-import AppLinks from './AppLinks'
+import Link from "next/link";
+import AppLinks from "./AppLinks";
 
 export default function Header() {
   return (
     <header className="mb-8">
       <div className="flex justify-between items-center mb-4">
-        <Link href="/" className="text-kamni-yellow text-xl font-bold no-underline hover:no-underline">
+        <Link
+          href="/"
+          className="text-kamni-yellow text-xl font-bold no-underline hover:no-underline"
+        >
           KAMNI
         </Link>
-        <div className="text-right">
-          Семейный фонд
-        </div>
+        <div className="text-right">Семейный фонд</div>
       </div>
       <nav>
         <ul className="flex gap-2 text-kamni-yellow">
@@ -28,5 +29,5 @@ export default function Header() {
         </ul>
       </nav>
     </header>
-  )
-} 
+  );
+}

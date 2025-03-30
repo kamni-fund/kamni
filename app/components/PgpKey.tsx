@@ -1,7 +1,7 @@
 export default function PgpKey() {
   return (
     <pre className="pre-block">
-{`-----BEGIN PGP PUBLIC KEY BLOCK-----
+      {`-----BEGIN PGP PUBLIC KEY BLOCK-----
 mDMEZXXl5RYJKwYBBAHaRw8BAQdAo68+Q7WU4C1/e6hIcPqi1vMnG/XG4PEEIrvZ
 M5fgZwq0J1N0YW5pc2xhdiBLYXJrYXZpbiA8c3RhbmlzbGF2QGthbW5pLmlvPoiT
 BBMWCgA7FiEECrfQv6TEktxbJ4XAB8fGkU69BN0FAmV4rUECGwMFCwkIBwICIgIG
@@ -21,5 +21,5 @@ IOMKL3+L8sJfA1jRrVXESuA9AQY=
 =XpUj
 -----END PGP PUBLIC KEY BLOCK-----`}
     </pre>
-  )
-} 
+  );
+}
