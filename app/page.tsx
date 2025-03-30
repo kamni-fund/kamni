@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import Header from './components/Header'
 import PgpKey from './components/PgpKey'
+import AppLinks from './components/AppLinks'
 
 export default function Home() {
   return (
@@ -20,10 +20,10 @@ export default function Home() {
         
         <ul className="list-disc pl-8 mb-6 space-y-2">
           <li>
-            Выступает эмитентом <Link href="/tokens">токенов</Link> услуг;
+            Выступает эмитентом <AppLinks.Stas />
           </li>
           <li>
-            Предоставляет услуги <Link href="/verification">верификации</Link> для <Link href="https://montelibero.org">Ассоциации Монтелиберо</Link>.
+            Предоставляет услуги <AppLinks.Verify /> для <AppLinks.MonteliberoAssociation />.
           </li>
         </ul>
         
@@ -32,7 +32,7 @@ export default function Home() {
         </div>
         
         <div className="mb-6">
-          <p>Почта для заявок на верификацию: <a href="mailto:verify@kamni.io">verify@kamni.io</a>.</p>
+          <p>Почта для заявок на верификацию: <AppLinks.Email address="verify@kamni.io" />.</p>
         </div>
         
         <div className="mb-8">
@@ -40,14 +40,6 @@ export default function Home() {
           <PgpKey />
         </div>
         
-        <div>
-          <h2 className="text-2xl font-bold text-kamni-yellow mb-4">LATEST POSTS</h2>
-          <ul className="list-disc pl-8">
-            <li>
-              <Link href="/posts/stas">STAS</Link>
-            </li>
-          </ul>
-        </div>
       </section>
     </div>
   )

@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import Header from '../components/Header'
+import AppLinks from '../components/AppLinks'
 
 export default function Verification() {
   return (
@@ -9,14 +9,10 @@ export default function Verification() {
       <section>
         <h1 className="text-3xl font-bold text-kamni-yellow mb-4">Услуга верификации для Ассоциации Монтелиберо</h1>
         
-        <div className="mb-4 text-gray-400">
-          24.12.2023 17:34
-        </div>
-
         <h2 className="text-2xl font-bold text-kamni-yellow mb-4">Что такое Ассоциация Монтелиберо</h2>
         
         <p className="mb-4">
-          Ассоциация Монтелиберо — это экстерриториальная контрактная юрисдикция внутри движения <Link href="https://montelibero.org" className="text-kamni-yellow">«Монтелиберо»</Link>. В отличие от движения, Ассоциация имеет фиксированное членство, внутренние положения, разные степени верификации и рабочие группы по разным проектам (Суды, Нотариат). Всё это фиксируется с помощью токенов на блокчейне Stellar. Главным документов является <Link href="https://montelibero.org/agreement" className="text-kamni-yellow">«Соглашение»</Link>.
+          Ассоциация Монтелиберо — это экстерриториальная контрактная юрисдикция внутри движения <AppLinks.MonteliberoAssociation />. В отличие от движения, Ассоциация имеет фиксированное членство, внутренние положения, разные степени верификации и рабочие группы по разным проектам (Суды, Нотариат). Всё это фиксируется с помощью токенов на блокчейне Stellar. Главным документов является <AppLinks.MonteliberoAgreement />.
         </p>
 
         <h2 className="text-2xl font-bold text-kamni-yellow mb-4">Зачем нужна верификация</h2>
@@ -34,13 +30,13 @@ export default function Verification() {
         <h2 className="text-2xl font-bold text-kamni-yellow mb-4">Процедура</h2>
         
         <p className="mb-4">
-          Напишите с просьбой о верификации на <Link href="mailto:verify@kamni.io" className="text-kamni-yellow">почту</Link> или в <Link href="https://t.me/xdefrag" className="text-kamni-yellow">telegram</Link>. В течение суток в рабочие дни с вами свяжутся для прохождения следующих шагов.
+          Напишите с просьбой о верификации на <AppLinks.Email address="verify@kamni.io" /> или в <AppLinks.Telegram />. В течение суток в рабочие дни с вами свяжутся для прохождения следующих шагов.
         </p>
 
         <p className="mb-4">Для верификации понадобятся:</p>
         
         <ul className="list-disc pl-8 mb-6 space-y-2">
-          <li>любые два или больше документа: загранпаспорт, внутренний паспорт, ВНЖ, водительские права и подобное. Рекомендуется все данные перед отправкой шифровать нашим <Link href="/public.gpg" className="text-kamni-yellow">публичным ключом</Link>;</li>
+          <li>любые два или больше документа: загранпаспорт, внутренний паспорт, ВНЖ, водительские права и подобное. Рекомендуется все данные перед отправкой шифровать нашим <AppLinks.PublicKey />;</li>
           <li>любые два контакта: почта, номер телефона, телеграм-аккаунт;</li>
           <li>публичный адрес на блокчейне Stellar. Согласно внутренним соглашениям Ассоциации, эта связка будет публичной;</li>
           <li>дополнительные контакты для связи, если с вами что-либо случится (по желанию).</li>
@@ -63,7 +59,7 @@ export default function Verification() {
         <h2 className="text-2xl font-bold text-kamni-yellow mb-4">Цена</h2>
         
         <p className="mb-4">
-          Все расчеты осуществляются на блокчейне Stellar токеном <Link href="https://montelibero.org/eurmtl" className="text-kamni-yellow">EURMTL</Link>.
+          Все расчеты осуществляются на блокчейне Stellar токеном <AppLinks.EurMtl />.
         </p>
         
         <p className="mb-4">
