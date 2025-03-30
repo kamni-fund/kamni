@@ -1,7 +1,9 @@
-export default function PgpKey() {
-  return (
-    <pre className="pre-block">
-      {`-----BEGIN PGP PUBLIC KEY BLOCK-----
+"use client";
+
+import CopyButton from "./CopyButton";
+import { Card, CardContent } from "@/components/ui/card";
+
+const GPG_KEY = `-----BEGIN PGP PUBLIC KEY BLOCK-----
 mDMEZXXl5RYJKwYBBAHaRw8BAQdAo68+Q7WU4C1/e6hIcPqi1vMnG/XG4PEEIrvZ
 M5fgZwq0J1N0YW5pc2xhdiBLYXJrYXZpbiA8c3RhbmlzbGF2QGthbW5pLmlvPoiT
 BBMWCgA7FiEECrfQv6TEktxbJ4XAB8fGkU69BN0FAmV4rUECGwMFCwkIBwICIgIG
@@ -19,7 +21,19 @@ ACAWIQQKt9C/pMSS3FsnhcAHx8aRTr0E3QUCZXXl5QIbDAAKCRAHx8aRTr0E3QWM
 APsEkuefSmzghI0nw+yi4J4zgWPkKmZBTt5bY6ZCYUVWcQEA6c8J21oyv4CmaCmA
 IOMKL3+L8sJfA1jRrVXESuA9AQY=
 =XpUj
------END PGP PUBLIC KEY BLOCK-----`}
-    </pre>
+-----END PGP PUBLIC KEY BLOCK-----`;
+
+export default function PgpKey() {
+  return (
+    <Card className="mb-2">
+      <CardContent className="p-3 relative">
+        <pre className="p-4 rounded overflow-x-auto text-xs font-mono whitespace-pre-wrap">
+          {GPG_KEY}
+        </pre>
+        <div className="absolute top-4 right-4">
+          <CopyButton text={GPG_KEY} displayText="" />
+        </div>
+      </CardContent>
+    </Card>
   );
 }

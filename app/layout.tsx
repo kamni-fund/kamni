@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { getThemeFromRequestOrDefault } from "@/app/lib/i18n";
 import Script from "next/script";
+import { Toaster } from "@/components/ui/toaster";
 
 // Расширенные метаданные для SEO
 export const metadata: Metadata = {
@@ -83,6 +84,7 @@ export default async function RootLayout({
           <main className="flex-grow py-8">{children}</main>
         </div>
         <Footer />
+        <Toaster />
 
         {/* Используем Script компонент вместо dangerouslySetInnerHTML */}
         <Script id="theme-init">{`

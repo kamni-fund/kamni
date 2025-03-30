@@ -16,6 +16,18 @@ vi.mock("next/headers", () => ({
   })),
 }));
 
+// Мокаем модуль next/navigation для решения ошибки useRouter
+vi.mock("next/navigation", () => ({
+  useRouter: vi.fn(() => ({
+    push: vi.fn(),
+    replace: vi.fn(),
+    refresh: vi.fn(),
+    back: vi.fn(),
+    forward: vi.fn(),
+    prefetch: vi.fn(),
+  })),
+}));
+
 // Мокаем модуль i18n
 vi.mock("@/app/lib/i18n", () => ({
   getLocaleFromRequestOrDefault: vi.fn(() => "ru"),
@@ -32,6 +44,15 @@ vi.mock("@/app/lib/i18n", () => ({
           verification: "Верификация",
           programs: "Программы",
         },
+      },
+      theme: {
+        light: "Светлая",
+        dark: "Темная",
+      },
+      language: {
+        ru: "Русский",
+        en: "English",
+        sr: "Српски",
       },
     })
   ),
@@ -50,35 +71,66 @@ vi.mock("@/app/lib/i18n", () => ({
           if (parts[2] === "programs") return "Программы";
         }
       }
+      if (parts[0] === "theme") {
+        if (parts[1] === "light") return "Светлая";
+        if (parts[1] === "dark") return "Темная";
+      }
+      if (parts[0] === "language") {
+        if (parts[1] === "ru") return "Русский";
+        if (parts[1] === "en") return "English";
+        if (parts[1] === "sr") return "Српски";
+      }
       return key;
     };
   }),
   getThemeFromRequestOrDefault: vi.fn(() => "dark"),
 }));
 
-// Мокаем клиентские компоненты
-vi.mock("./MobileMenu", () => ({
-  default: ({ fundTitle, slogan }: { fundTitle: string; slogan: string }) => (
-    <div data-testid="mobile-menu">
+// Определяем тип для навигационных ссылок
+interface NavLink {
+  id: string;
+  href: string;
+  title: string;
+  isParent?: boolean;
+  children?: NavLink[];
+}
+
+// Мокаем компоненты, использующие Client Components
+vi.mock("./MobileSheet", () => ({
+  MobileSheet: ({
+    fundTitle,
+    slogan,
+  }: { fundTitle: string; slogan: string }) => (
+    <div data-testid="mobile-sheet">
       <div>{fundTitle}</div>
       <div>{slogan}</div>
     </div>
   ),
 }));
 
-vi.mock("./ThemeToggleButton", () => ({
-  default: () => (
-    <button type="button" data-testid="theme-toggle">
-      Theme Toggle
+vi.mock("./ThemeSelector", () => ({
+  ThemeSelector: () => (
+    <button type="button" data-testid="theme-selector">
+      Theme Selector
     </button>
   ),
 }));
 
-vi.mock("./LanguageToggleButton", () => ({
-  default: () => (
-    <button type="button" data-testid="language-toggle">
-      Language Toggle
+vi.mock("./LanguageSelector", () => ({
+  LanguageSelector: () => (
+    <button type="button" data-testid="language-selector">
+      Language Selector
     </button>
+  ),
+}));
+
+vi.mock("./NavigationMenu", () => ({
+  MainNavigation: ({ links }: { links: NavLink[] }) => (
+    <nav data-testid="main-navigation">
+      {links.map((link) => (
+        <div key={link.id}>{link.title}</div>
+      ))}
+    </nav>
   ),
 }));
 
@@ -89,7 +141,7 @@ describe("Header", () => {
   });
 
   it("renders the logo and navigation links", async () => {
-    const { container } = render(await Header());
+    render(await Header());
 
     // Проверяем наличие логотипа
     const logo = screen.getByText("KAMNI");
@@ -104,14 +156,11 @@ describe("Header", () => {
     ).toBeInTheDocument();
 
     // Проверяем наличие навигационных ссылок
-    expect(screen.getByText("О Фонде")).toBeInTheDocument();
-    expect(screen.getByText("Токены")).toBeInTheDocument();
-    expect(screen.getByText("Услуги")).toBeInTheDocument();
-    expect(screen.getByText("Программы")).toBeInTheDocument();
+    expect(screen.getByTestId("main-navigation")).toBeInTheDocument();
 
     // Проверяем наличие компонентов переключения
-    expect(screen.getByTestId("theme-toggle")).toBeInTheDocument();
-    expect(screen.getByTestId("language-toggle")).toBeInTheDocument();
-    expect(screen.getByTestId("mobile-menu")).toBeInTheDocument();
+    expect(screen.getByTestId("theme-selector")).toBeInTheDocument();
+    expect(screen.getByTestId("language-selector")).toBeInTheDocument();
+    expect(screen.getByTestId("mobile-sheet")).toBeInTheDocument();
   });
 });
