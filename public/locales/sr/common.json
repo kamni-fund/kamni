@@ -6,8 +6,10 @@
       "about": "О фонду",
       "tokens": "Токени",
       "stas": "СТАС",
-      "proposals": "Предлози",
-      "verification": "Верификација"
+      "services": "Услуге",
+      "verification": "Верификација",
+      "programs": "Програми",
+      "publicKey": "Јавни кључ"
     }
   },
   "footer": {
@@ -15,6 +17,7 @@
     "navigation": "Навигација",
     "contacts": "Контакти",
     "rights": "© {{year}} КАМНИ Породични фонд",
+    "license": "CC BY-SA 4.0",
     "privacy": "Политика приватности"
   },
   "theme": {

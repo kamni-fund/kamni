@@ -28,8 +28,9 @@ vi.mock("@/app/lib/i18n", () => ({
           about: "О Фонде",
           tokens: "Токены",
           stas: "STAS",
+          services: "Услуги",
           verification: "Верификация",
-          proposals: "Предложения",
+          programs: "Программы",
         },
       },
     })
@@ -44,8 +45,9 @@ vi.mock("@/app/lib/i18n", () => ({
           if (parts[2] === "about") return "О Фонде";
           if (parts[2] === "tokens") return "Токены";
           if (parts[2] === "stas") return "STAS";
+          if (parts[2] === "services") return "Услуги";
           if (parts[2] === "verification") return "Верификация";
-          if (parts[2] === "proposals") return "Предложения";
+          if (parts[2] === "programs") return "Программы";
         }
       }
       return key;
@@ -104,8 +106,8 @@ describe("Header", () => {
     // Проверяем наличие навигационных ссылок
     expect(screen.getByText("О Фонде")).toBeInTheDocument();
     expect(screen.getByText("Токены")).toBeInTheDocument();
-    expect(screen.getByText("Верификация")).toBeInTheDocument();
-    expect(screen.getByText("Предложения")).toBeInTheDocument();
+    expect(screen.getByText("Услуги")).toBeInTheDocument();
+    expect(screen.getByText("Программы")).toBeInTheDocument();
 
     // Проверяем наличие компонентов переключения
     expect(screen.getByTestId("theme-toggle")).toBeInTheDocument();

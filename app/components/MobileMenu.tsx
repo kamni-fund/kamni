@@ -11,6 +11,7 @@ interface NavigationLink {
   id: string;
   href: string;
   title: string;
+  isParent?: boolean;
   children?: NavigationLink[];
 }
 
@@ -64,19 +65,25 @@ export default function MobileMenu({
             <nav className="py-4">
               <ul className="space-y-4">
                 {links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-lg font-medium text-white hover:text-kamni-yellow block py-2"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {link.title}
-                    </Link>
+                  <li key={link.id}>
+                    {link.isParent ? (
+                      <span className="text-lg font-medium text-white block py-2">
+                        {link.title}
+                      </span>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-lg font-medium text-white hover:text-kamni-yellow block py-2"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {link.title}
+                      </Link>
+                    )}
 
                     {link.children && (
                       <ul className="pl-6 mt-2 space-y-2 border-l border-gray-700">
                         {link.children.map((child) => (
-                          <li key={child.href}>
+                          <li key={child.id}>
                             <Link
                               href={child.href}
                               className="text-gray-300 hover:text-kamni-yellow block py-1"

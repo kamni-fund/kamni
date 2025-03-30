@@ -1,3 +1,5 @@
+import React from "react";
+import Link from "next/link";
 import PgpKey from "./components/PgpKey";
 import AppLinks from "./components/AppLinks";
 

@@ -15,11 +15,17 @@ const navigationLinks = [
   { id: "about", href: "/" },
   {
     id: "tokens",
-    href: "/tokens",
-    children: [{ id: "stas", href: "/tokens/stas" }],
+    href: "#",
+    isParent: true,
+    children: [{ id: "stas", href: "/stas" }],
   },
-  { id: "proposals", href: "/proposals" },
-  { id: "verification", href: "/verify" },
+  {
+    id: "services",
+    href: "#",
+    isParent: true,
+    children: [{ id: "verification", href: "/verify" }],
+  },
+  { id: "programs", href: "#", isParent: true },
 ];
 
 export default async function Header() {
@@ -60,19 +66,27 @@ export default async function Header() {
             <nav className="hidden md:block">
               <ul className="flex space-x-6">
                 {navigationLinks.map((link) => (
-                  <li key={link.href} className="relative group">
-                    <Link
-                      href={link.href}
-                      className="text-white hover:text-kamni-yellow transition-colors"
-                    >
-                      {t(`header.navigation.${link.id}`)}
-                    </Link>
+                  <li key={link.id} className="relative group">
+                    {link.isParent ? (
+                      <span className="text-white hover:text-kamni-yellow transition-colors cursor-default">
+                        {t(`header.navigation.${link.id}`)}
+                      </span>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-white hover:text-kamni-yellow transition-colors"
+                      >
+                        {t(`header.navigation.${link.id}`)}
+                      </Link>
+                    )}
 
                     {link.children && (
-                      <div className="absolute left-0 mt-2 w-48 bg-kamni-dark border border-gray-700 rounded-md shadow-lg hidden group-hover:block z-10">
+                      <div className="absolute left-0 mt-2 w-48 bg-kamni-dark border border-gray-700 rounded-md shadow-lg hidden group-hover:block hover:block z-10 pb-2">
+                        {/* Добавляем прозрачную область сверху для лучшего наведения */}
+                        <div className="h-2 absolute -top-2 left-0 right-0" />
                         <ul className="py-1">
                           {link.children.map((child) => (
-                            <li key={child.href}>
+                            <li key={child.id}>
                               <Link
                                 href={child.href}
                                 className="block px-4 py-2 text-sm text-white hover:bg-gray-700/30 hover:text-kamni-yellow"

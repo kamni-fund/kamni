@@ -6,8 +6,10 @@
       "about": "О Фонде",
       "tokens": "Токены",
       "stas": "STAS",
-      "proposals": "Предложения",
-      "verification": "Верификация"
+      "services": "Услуги",
+      "verification": "Верификация",
+      "programs": "Программы",
+      "publicKey": "Публичный ключ"
     }
   },
   "footer": {
@@ -15,6 +17,7 @@
     "navigation": "Навигация",
     "contacts": "Контакты",
     "rights": "© {{year}} KAMNI Family Fund",
+    "license": "CC BY-SA 4.0",
     "privacy": "Политика конфиденциальности"
   },
   "theme": {

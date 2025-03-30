@@ -26,8 +26,10 @@ vi.mock("@/app/lib/i18n", () => ({
         navigation: {
           about: "О Фонде",
           tokens: "Токены",
+          stas: "STAS",
+          services: "Услуги",
           verification: "Верификация",
-          proposals: "Предложения",
+          programs: "Программы",
           publicKey: "Публичный ключ",
         },
       },
@@ -36,8 +38,7 @@ vi.mock("@/app/lib/i18n", () => ({
           "Семейный фонд KAMNI занимается накоплением средств для членов семьи.",
         navigation: "Навигация",
         contacts: "Контакты",
-        rights: "© {{year}} KAMNI Family Fund",
-        privacy: "Политика конфиденциальности",
+        license: "footer.license",
       },
     })
   ),
@@ -49,19 +50,17 @@ vi.mock("@/app/lib/i18n", () => ({
           return "Семейный фонд KAMNI занимается накоплением средств для членов семьи.";
         if (parts[1] === "navigation") return "Навигация";
         if (parts[1] === "contacts") return "Контакты";
-        if (parts[1] === "rights") {
-          const year = params?.year || new Date().getFullYear();
-          return `© ${year} KAMNI Family Fund`;
-        }
-        if (parts[1] === "privacy") return "Политика конфиденциальности";
+        if (parts[1] === "license") return "footer.license";
       }
       if (parts[0] === "header") {
         if (parts[1] === "slogan") return "ДАЙТЕ ДЕНЕГ";
         if (parts[1] === "navigation") {
           if (parts[2] === "about") return "О Фонде";
           if (parts[2] === "tokens") return "Токены";
+          if (parts[2] === "stas") return "STAS";
+          if (parts[2] === "services") return "Услуги";
           if (parts[2] === "verification") return "Верификация";
-          if (parts[2] === "proposals") return "Предложения";
+          if (parts[2] === "programs") return "Программы";
           if (parts[2] === "publicKey") return "Публичный ключ";
         }
       }
@@ -94,20 +93,11 @@ describe("Footer", () => {
     // Проверяем навигационные ссылки
     expect(screen.getByText("О Фонде")).toBeInTheDocument();
     expect(screen.getByText("Токены")).toBeInTheDocument();
-    expect(screen.getByText("Верификация")).toBeInTheDocument();
-    expect(screen.getByText("Предложения")).toBeInTheDocument();
+    expect(screen.getByText("Услуги")).toBeInTheDocument();
+    expect(screen.getByText("Программы")).toBeInTheDocument();
     expect(screen.getByText("Публичный ключ")).toBeInTheDocument();
 
-    // Проверяем наличие копирайта
-    const currentYear = new Date().getFullYear().toString();
-    expect(
-      screen.getByText(`© ${currentYear} KAMNI Family Fund`)
-    ).toBeInTheDocument();
-
-    // Проверяем наличие версии
-    expect(screen.getByText("v0.1.0")).toBeInTheDocument();
-
-    // Проверяем наличие политики конфиденциальности
-    expect(screen.getByText("Политика конфиденциальности")).toBeInTheDocument();
+    // Проверяем наличие копилефта
+    expect(screen.getByText("footer.license")).toBeInTheDocument();
   });
 });

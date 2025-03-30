@@ -6,20 +6,25 @@ import {
   getTranslations,
   getTranslationFunction,
 } from "@/app/lib/i18n";
+import { CreativeCommonsIcon } from "./Icons";
 
 // Ссылки на социальные сети и другие ресурсы
 const socialLinks = [
   { name: "Telegram", href: "https://t.me/xdefrag" },
-  { name: "GitHub", href: "https://github.com/xdefrag/kamni-test" },
-  { name: "Email", href: "mailto:contact@kamni.fund" },
+  { name: "GitHub", href: "https://github.com/kamni-fund" },
+  { name: "Email", href: "mailto:me@xdefrag.com" },
 ];
 
 // Навигационные ссылки в футере
 const footerNav = [
   { id: "about", href: "/" },
-  { id: "tokens", href: "/tokens" },
-  { id: "verification", href: "/verify" },
-  { id: "proposals", href: "/proposals" },
+  { id: "tokens", href: "#", children: [{ id: "stas", href: "/stas" }] },
+  {
+    id: "services",
+    href: "#",
+    children: [{ id: "verification", href: "/verify" }],
+  },
+  { id: "programs", href: "#", children: [] },
   { id: "publicKey", href: "/public.gpg" },
 ];
 
@@ -48,13 +53,33 @@ export default async function Footer() {
             </h3>
             <ul className="space-y-2">
               {footerNav.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-300 hover:text-kamni-yellow transition-colors"
-                  >
-                    {t(`header.navigation.${link.id}`)}
-                  </Link>
+                <li key={link.id}>
+                  {link.children ? (
+                    <>
+                      <span className="text-gray-300">
+                        {t(`header.navigation.${link.id}`)}
+                      </span>
+                      <ul className="pl-4 mt-1 space-y-1">
+                        {link.children.map((child) => (
+                          <li key={child.id}>
+                            <Link
+                              href={child.href}
+                              className="text-gray-400 hover:text-kamni-yellow transition-colors"
+                            >
+                              {t(`header.navigation.${child.id}`)}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-gray-300 hover:text-kamni-yellow transition-colors"
+                    >
+                      {t(`header.navigation.${link.id}`)}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -86,15 +111,16 @@ export default async function Footer() {
         </div>
 
         <div className="border-t border-gray-700 pt-6 flex flex-col sm:flex-row justify-between items-center">
-          <div className="mb-4 sm:mb-0">
-            {t("footer.rights", { year: new Date().getFullYear() })}
-          </div>
-          <div className="text-gray-400 text-sm">
-            <span>v0.1.0</span>
-            <span className="mx-2">•</span>
-            <Link href="/privacy" className="hover:text-kamni-yellow">
-              {t("footer.privacy")}
-            </Link>
+          <div>
+            <a
+              href="https://creativecommons.org/licenses/by-sa/4.0/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-gray-300 hover:text-kamni-yellow transition-colors"
+            >
+              <CreativeCommonsIcon className="w-4 h-4 mr-1" />
+              <span className="mr-1">{t("footer.license")}</span>
+            </a>
           </div>
         </div>
       </div>
