@@ -1,21 +1,9 @@
-import React from "react";
-import Link from "next/link";
-import PgpKey from "./components/PgpKey";
+import { Card, CardContent } from "@/components/ui/card";
 import AppLinks from "./components/AppLinks";
 import CopyButton from "./components/CopyButton";
-import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { useToast } from "@/hooks/use-toast";
-import { CopyIcon, CheckIcon } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import PgpKey from "./components/PgpKey";
 
-const STELLAR_ADDRESS =
-  "GCUEVVS4KIHZM7DAHKXIRWSCN3V3Y4KX6UNNUU7PV73VQK44CNKAMNI";
+const STELLAR_ADDRESS = "GCUEVVS4KIHZM7DAHKXIRWSCN3V3Y4KX6UNNUU7PV73VQK44CNKAMNI";
 
 export default function Home() {
   return (
@@ -32,8 +20,7 @@ export default function Home() {
             Выступает эмитентом <AppLinks.Stas />
           </li>
           <li>
-            Предоставляет услуги <AppLinks.Verify /> для{" "}
-            <AppLinks.MonteliberoAssociation />.
+            Предоставляет услуги <AppLinks.Verify /> для <AppLinks.MonteliberoAssociation />.
           </li>
         </ul>
 
@@ -41,9 +28,7 @@ export default function Home() {
           <p className="mb-3">Адрес на блокчейне Stellar:</p>
           <Card className="mb-2">
             <CardContent className="p-3 flex items-center justify-between">
-              <code className="text-sm font-mono block truncate">
-                {STELLAR_ADDRESS}
-              </code>
+              <code className="text-sm font-mono block truncate">{STELLAR_ADDRESS}</code>
               <CopyButton text={STELLAR_ADDRESS} displayText="" />
             </CardContent>
           </Card>
@@ -51,8 +36,7 @@ export default function Home() {
 
         <div className="mb-6">
           <p>
-            Почта для заявок на верификацию:{" "}
-            <AppLinks.Email address="verify@kamni.io" />.
+            Почта для заявок на верификацию: <AppLinks.Email address="stas@panarchy.now" />.
           </p>
         </div>
 

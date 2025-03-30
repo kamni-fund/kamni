@@ -1,15 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useToast } from "@/hooks/use-toast";
-import { Copy, Check } from "lucide-react";
+import { Check, Copy } from "lucide-react";
+import { useState } from "react";
 
 interface CopyButtonProps {
   text: string;
@@ -17,11 +12,7 @@ interface CopyButtonProps {
   displayText?: string;
 }
 
-export default function CopyButton({
-  text,
-  className = "",
-  displayText,
-}: CopyButtonProps) {
+export default function CopyButton({ text, className = "", displayText }: CopyButtonProps) {
   const [copying, setCopying] = useState(false);
   const { toast } = useToast();
 

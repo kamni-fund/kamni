@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 import { Globe } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface Language {
   code: string;
@@ -18,13 +18,13 @@ interface Language {
 
 interface LanguageSelectorProps {
   initialLanguage?: string;
-  buttonLabel?: string;
+  _buttonLabel?: string;
   languages?: Language[];
 }
 
 export function LanguageSelector({
   initialLanguage = "ru",
-  buttonLabel = "Язык",
+  _buttonLabel = "Язык",
   languages = [
     { code: "ru", name: "Русский" },
     { code: "en", name: "English" },
@@ -62,10 +62,7 @@ export function LanguageSelector({
           <Globe className="h-5 w-5 text-kamni-yellow" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="end"
-        className="bg-muted/30 border border-border"
-      >
+      <DropdownMenuContent align="end" className="bg-muted/30 border border-border">
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}

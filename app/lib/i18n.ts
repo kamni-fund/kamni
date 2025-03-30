@@ -14,15 +14,10 @@ export async function getTranslations(
   namespace = "common"
 ): Promise<TranslationObject> {
   try {
-    const translations = await import(
-      `@/public/locales/${locale}/${namespace}.json`
-    );
+    const translations = await import(`@/public/locales/${locale}/${namespace}.json`);
     return translations.default || translations;
   } catch (error) {
-    console.error(
-      `Failed to load translations for ${locale}/${namespace}`,
-      error
-    );
+    console.error(`Failed to load translations for ${locale}/${namespace}`, error);
 
     // Возврат пустого объекта, если не удалось загрузить переводы
     return {};
@@ -62,10 +57,7 @@ export function getLocaleFromRequestOrDefault(
 
 // Функция-хелпер для перевода строк
 export function getTranslationFunction(translations: TranslationObject) {
-  return function t(
-    key: string,
-    params?: Record<string, string | number>
-  ): string {
+  return function t(key: string, params?: Record<string, string | number>): string {
     const keys = key.split(".");
     let result: unknown = translations;
 
@@ -87,14 +79,9 @@ export function getTranslationFunction(translations: TranslationObject) {
 
     // Замена параметров в формате {{param}}
     if (params) {
-      return result.replace(
-        /\{\{(\w+)\}\}/g,
-        (_: string, paramName: string) => {
-          return params[paramName] !== undefined
-            ? String(params[paramName])
-            : `{{${paramName}}}`;
-        }
-      );
+      return result.replace(/\{\{(\w+)\}\}/g, (_: string, paramName: string) => {
+        return params[paramName] !== undefined ? String(params[paramName]) : `{{${paramName}}}`;
+      });
     }
 
     return result;
@@ -102,12 +89,7 @@ export function getTranslationFunction(translations: TranslationObject) {
 }
 
 // Функция для получения темы из кук или возврат темы по умолчанию
-export function getThemeFromRequestOrDefault(
-  cookies?: ReadonlyRequestCookies
-): "light" | "dark" {
-  const themeCookie = cookies?.get("theme")?.value as
-    | "light"
-    | "dark"
-    | undefined;
+export function getThemeFromRequestOrDefault(cookies?: ReadonlyRequestCookies): "light" | "dark" {
+  const themeCookie = cookies?.get("theme")?.value as "light" | "dark" | undefined;
   return themeCookie === "light" ? "light" : "dark"; // По умолчанию 'dark'
 }

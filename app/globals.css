@@ -10,18 +10,19 @@
   body {
     color: rgb(var(--foreground));
     background: rgb(var(--background));
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
   a {
     @apply text-kamni-yellow hover:underline;
   }
-  
+
   /* Анимации только для фона, границ и др. (но не для цвета текста) */
-  footer, [data-theme-bg], body {
-    transition: background-color var(--transition-time) ease,
-                border-color var(--transition-time) ease !important;
+  footer,
+  [data-theme-bg],
+  body {
+    transition: background-color var(--transition-time) ease, border-color var(--transition-time)
+      ease !important;
   }
   :root {
     --background: 0 0% 100%;
@@ -98,11 +99,11 @@
   background-color: rgba(var(--muted), 0.3) !important;
 }
 
-.dark [cmdk-item][data-selected=true] {
+.dark [cmdk-item][data-selected="true"] {
   background-color: rgba(255, 255, 255, 0.06);
 }
 
-.dark [cmdk-item][data-selected=true]:hover {
+.dark [cmdk-item][data-selected="true"]:hover {
   background-color: rgba(255, 255, 255, 0.08);
 }
 

@@ -1,12 +1,8 @@
 "use client";
 
 import i18next from "i18next";
-import {
-  initReactI18next,
-  useTranslation as useTranslationOrg,
-} from "react-i18next";
-import resourcesToBackend from "i18next-resources-to-backend";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { initReactI18next, useTranslation as useTranslationOrg } from "react-i18next";
 
 // Поддерживаемые языки
 export const LANGUAGES = ["ru", "en", "sr"];
@@ -43,7 +39,7 @@ i18next.use(initReactI18next).init({
 
 // Хук для использования переводов в компонентах
 export function useTranslation(ns = "common") {
-  const [language, setLanguage] = useState(DEFAULT_LANGUAGE);
+  const [_language, setLanguage] = useState(DEFAULT_LANGUAGE);
 
   // Определяем текущий язык при монтировании компонента
   useEffect(() => {
@@ -56,9 +52,7 @@ export function useTranslation(ns = "common") {
       } else {
         // Определение языка браузера
         const browserLang = navigator.language.split("-")[0];
-        const supportedLang = LANGUAGES.includes(browserLang)
-          ? browserLang
-          : DEFAULT_LANGUAGE;
+        const supportedLang = LANGUAGES.includes(browserLang) ? browserLang : DEFAULT_LANGUAGE;
 
         setLanguage(supportedLang);
         i18next.changeLanguage(supportedLang);
@@ -81,9 +75,7 @@ export function useLanguage() {
         setLanguage(savedLang);
       } else {
         const browserLang = navigator.language.split("-")[0];
-        const supportedLang = LANGUAGES.includes(browserLang)
-          ? browserLang
-          : DEFAULT_LANGUAGE;
+        const supportedLang = LANGUAGES.includes(browserLang) ? browserLang : DEFAULT_LANGUAGE;
 
         setLanguage(supportedLang);
         localStorage.setItem("language", supportedLang);

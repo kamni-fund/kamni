@@ -1,7 +1,7 @@
 "use client";
 
-import CopyButton from "./CopyButton";
 import { Card, CardContent } from "@/components/ui/card";
+import CopyButton from "./CopyButton";
 
 const GPG_KEY = `-----BEGIN PGP PUBLIC KEY BLOCK-----
 mDMEZXXl5RYJKwYBBAHaRw8BAQdAo68+Q7WU4C1/e6hIcPqi1vMnG/XG4PEEIrvZ

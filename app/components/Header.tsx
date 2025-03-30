@@ -1,15 +1,15 @@
-import Link from "next/link";
-import { cookies, headers } from "next/headers";
 import {
   getLocaleFromRequestOrDefault,
-  getTranslations,
-  getTranslationFunction,
   getThemeFromRequestOrDefault,
+  getTranslationFunction,
+  getTranslations,
 } from "@/app/lib/i18n";
-import { MobileSheet } from "./MobileSheet";
-import { ThemeSelector } from "./ThemeSelector";
+import { cookies, headers } from "next/headers";
+import Link from "next/link";
 import { LanguageSelector } from "./LanguageSelector";
+import { MobileSheet } from "./MobileSheet";
 import { MainNavigation } from "./NavigationMenu";
+import { ThemeSelector } from "./ThemeSelector";
 
 // Структура ссылок для навигации
 const navigationLinks = [
@@ -70,12 +70,8 @@ export default async function Header() {
 
           <div className="flex items-center space-x-2">
             <div className="text-right hidden sm:block">
-              <div className="text-kamni-yellow font-medium">
-                {t("header.fund")}
-              </div>
-              <div className="text-sm text-muted-foreground opacity-70">
-                {t("header.slogan")}
-              </div>
+              <div className="text-kamni-yellow font-medium">{t("header.fund")}</div>
+              <div className="text-sm text-muted-foreground opacity-70">{t("header.slogan")}</div>
             </div>
 
             <div className="flex items-center space-x-1">

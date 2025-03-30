@@ -1,14 +1,13 @@
-import React from "react";
-import Link from "next/link";
-import { cookies, headers } from "next/headers";
 import {
   getLocaleFromRequestOrDefault,
-  getTranslations,
-  getTranslationFunction,
   getThemeFromRequestOrDefault,
+  getTranslationFunction,
+  getTranslations,
 } from "@/app/lib/i18n";
-import { CreativeCommonsIcon } from "./Icons";
 import { Separator } from "@/components/ui/separator";
+import { cookies, headers } from "next/headers";
+import Link from "next/link";
+import { CreativeCommonsIcon } from "./Icons";
 
 // Ссылки на социальные сети и другие ресурсы
 const socialLinks = [
@@ -40,7 +39,7 @@ export default async function Footer() {
   const t = getTranslationFunction(translations);
 
   // Получаем текущую тему
-  const theme = getThemeFromRequestOrDefault(cookieStore);
+  const _theme = getThemeFromRequestOrDefault(cookieStore);
 
   return (
     <footer className="bg-muted/30 pt-8 pb-6 mt-auto">
@@ -49,23 +48,17 @@ export default async function Footer() {
           <div>
             <h3 className="text-kamni-yellow font-bold text-lg mb-4">KAMNI</h3>
             <p className="text-foreground mb-4">{t("footer.description")}</p>
-            <p className="text-sm text-muted-foreground">
-              {t("header.slogan")}
-            </p>
+            <p className="text-sm text-muted-foreground">{t("header.slogan")}</p>
           </div>
 
           <div>
-            <h3 className="text-kamni-yellow font-bold text-lg mb-4">
-              {t("footer.navigation")}
-            </h3>
+            <h3 className="text-kamni-yellow font-bold text-lg mb-4">{t("footer.navigation")}</h3>
             <ul className="space-y-2">
               {footerNav.map((link) => (
                 <li key={link.id}>
                   {link.children && link.children.length > 0 ? (
                     <>
-                      <span className="text-foreground">
-                        {t(`header.navigation.${link.id}`)}
-                      </span>
+                      <span className="text-foreground">{t(`header.navigation.${link.id}`)}</span>
                       <ul className="pl-4 mt-1 space-y-1">
                         {link.children.map((child) => (
                           <li key={child.id}>
@@ -93,9 +86,7 @@ export default async function Footer() {
           </div>
 
           <div>
-            <h3 className="text-kamni-yellow font-bold text-lg mb-4">
-              {t("footer.contacts")}
-            </h3>
+            <h3 className="text-kamni-yellow font-bold text-lg mb-4">{t("footer.contacts")}</h3>
             <ul className="space-y-2">
               {socialLinks.map((link) => (
                 <li key={link.href}>
@@ -103,11 +94,7 @@ export default async function Footer() {
                     href={link.href}
                     className="text-foreground hover:text-kamni-yellow transition-colors"
                     target={link.href.startsWith("http") ? "_blank" : undefined}
-                    rel={
-                      link.href.startsWith("http")
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
+                    rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   >
                     {link.name}
                   </Link>

@@ -1,5 +1,3 @@
-import React from "react";
-
 interface IconProps {
   className?: string;
 }
@@ -100,11 +98,7 @@ export function CloseIcon({ className = "" }: IconProps) {
       aria-hidden="true"
     >
       <title>Close icon</title>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M6 18 18 6M6 6l12 12"
-      />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
     </svg>
   );
 }

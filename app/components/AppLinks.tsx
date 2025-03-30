@@ -30,10 +30,7 @@ const AppLinks = {
     </Link>
   ),
   MonteliberoCourt: () => (
-    <Link
-      href="https://montelibero.org/mtl_court/"
-      className="text-kamni-yellow"
-    >
+    <Link href="https://montelibero.org/mtl_court/" className="text-kamni-yellow">
       МТЛ-суде
     </Link>
   ),

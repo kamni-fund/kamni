@@ -1,19 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { MenuIcon } from "@/app/components/Icons";
+import { LanguageSelector } from "@/app/components/LanguageSelector";
+import { ThemeSelector } from "@/app/components/ThemeSelector";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { MenuIcon } from "@/app/components/Icons";
-import { ThemeSelector } from "@/app/components/ThemeSelector";
-import { LanguageSelector } from "@/app/components/LanguageSelector";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import Link from "next/link";
+import { useState } from "react";
 
 interface NavigationLink {
   id: string;
@@ -58,9 +52,7 @@ export function MobileSheet({ links, fundTitle, slogan }: MobileSheetProps) {
               <li key={link.id}>
                 {link.isParent ? (
                   <div className="space-y-2">
-                    <h3 className="text-lg font-medium text-foreground">
-                      {link.title}
-                    </h3>
+                    <h3 className="text-lg font-medium text-foreground">{link.title}</h3>
                     {link.children && (
                       <ul className="pl-4 space-y-2 border-l-2 border-muted">
                         {link.children.map((child) => (

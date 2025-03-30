@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface ThemeSelectorProps {
   initialTheme?: string;
@@ -71,10 +71,7 @@ export function ThemeSelector({
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="end"
-        className="bg-muted/30 border border-border"
-      >
+      <DropdownMenuContent align="end" className="bg-muted/30 border border-border">
         <DropdownMenuItem
           onClick={() => toggleTheme("light")}
           className={`text-foreground hover:text-kamni-yellow hover:bg-muted/50 ${theme === "light" ? "bg-muted/50" : ""}`}

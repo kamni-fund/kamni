@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import Footer from "./Footer";
 
 // Мокаем модули Next.js
@@ -35,8 +35,7 @@ vi.mock("@/app/lib/i18n", () => ({
         },
       },
       footer: {
-        description:
-          "Семейный фонд KAMNI занимается накоплением средств для членов семьи.",
+        description: "Семейный фонд KAMNI занимается накоплением средств для членов семьи.",
         navigation: "Навигация",
         contacts: "Контакты",
         license: "footer.license",
@@ -44,7 +43,7 @@ vi.mock("@/app/lib/i18n", () => ({
     })
   ),
   getTranslationFunction: vi.fn(() => {
-    return (key: string, params?: Record<string, string | number>) => {
+    return (key: string, _params?: Record<string, string | number>) => {
       const parts = key.split(".");
       if (parts[0] === "footer") {
         if (parts[1] === "description")
@@ -82,9 +81,7 @@ describe("Footer", () => {
     // Проверяем наличие логотипа и описания
     expect(screen.getByText("KAMNI")).toBeInTheDocument();
     expect(
-      screen.getByText(
-        "Семейный фонд KAMNI занимается накоплением средств для членов семьи."
-      )
+      screen.getByText("Семейный фонд KAMNI занимается накоплением средств для членов семьи.")
     ).toBeInTheDocument();
 
     // Проверяем заголовки секций

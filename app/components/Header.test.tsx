@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import Header from "./Header";
 
 // Мокаем модули Next.js
@@ -97,10 +97,7 @@ interface NavLink {
 
 // Мокаем компоненты, использующие Client Components
 vi.mock("./MobileSheet", () => ({
-  MobileSheet: ({
-    fundTitle,
-    slogan,
-  }: { fundTitle: string; slogan: string }) => (
+  MobileSheet: ({ fundTitle, slogan }: { fundTitle: string; slogan: string }) => (
     <div data-testid="mobile-sheet">
       <div>{fundTitle}</div>
       <div>{slogan}</div>

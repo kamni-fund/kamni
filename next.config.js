@@ -32,7 +32,7 @@ const nextConfig = {
   },
   poweredByHeader: false,
   generateEtags: false,
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config, { dev, _isServer }) => {
     if (dev) {
       config.optimization.minimize = false;
       config.optimization.moduleIds = "named";

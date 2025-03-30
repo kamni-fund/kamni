@@ -1,25 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { cookies, headers } from "next/headers";
+import { cookies } from "next/headers";
 import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import { getThemeFromRequestOrDefault } from "@/app/lib/i18n";
-import Script from "next/script";
 import { Toaster } from "@/components/ui/toaster";
+import Script from "next/script";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 // Расширенные метаданные для SEO
 export const metadata: Metadata = {
   title: "KAMNI - Семейный фонд",
-  description:
-    "Семейный фонд KAMNI занимается накоплением средств для членов семьи",
-  keywords: [
-    "семейный фонд",
-    "накопления",
-    "инвестиции",
-    "STAS",
-    "верификация",
-    "Монтелиберо",
-  ],
+  description: "Семейный фонд KAMNI занимается накоплением средств для членов семьи",
+  keywords: ["семейный фонд", "накопления", "инвестиции", "STAS", "верификация", "Монтелиберо"],
   metadataBase: new URL("https://kamni.io"),
   // TODO: Добавить актуальную информацию
   authors: [{ name: "KAMNI Family Fund" }],
@@ -27,8 +19,7 @@ export const metadata: Metadata = {
   publisher: "KAMNI Family Fund",
   openGraph: {
     title: "KAMNI - Семейный фонд",
-    description:
-      "Семейный фонд KAMNI занимается накоплением средств для членов семьи",
+    description: "Семейный фонд KAMNI занимается накоплением средств для членов семьи",
     url: "https://kamni.io",
     siteName: "KAMNI Family Fund",
     locale: "ru_RU",
@@ -37,8 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "KAMNI - Семейный фонд",
-    description:
-      "Семейный фонд KAMNI занимается накоплением средств для членов семьи",
+    description: "Семейный фонд KAMNI занимается накоплением средств для членов семьи",
     creator: "@xdefrag", // TODO: Заменить актуальным Twitter аккаунтом
   },
   // TODO: Добавить актуальные ссылки на социальные сети
@@ -65,17 +55,10 @@ export default async function RootLayout({
   const theme = getThemeFromRequestOrDefault(cookieStore);
 
   return (
-    <html
-      lang="ru"
-      className={`h-full scroll-smooth ${theme === "dark" ? "dark" : ""}`}
-    >
+    <html lang="ru" className={`h-full scroll-smooth ${theme === "dark" ? "dark" : ""}`}>
       <body
         className={`
-        ${
-          theme === "dark"
-            ? "text-white bg-kamni-dark"
-            : "text-gray-900 bg-kamni-light"
-        } 
+        ${theme === "dark" ? "text-white bg-kamni-dark" : "text-gray-900 bg-kamni-light"} 
         flex flex-col min-h-screen
       `}
       >
