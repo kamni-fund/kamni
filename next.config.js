@@ -19,6 +19,21 @@ const nextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
+      {
+        source: "/.well-known/stellar.toml",
+        headers: [
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          { key: "Content-Type", value: "text/plain" },
+        ],
+      },
+      {
+        source: "/.well-known/:path*",
+        headers: [{ key: "Access-Control-Allow-Origin", value: "*" }],
+      },
+    ];
+  },
   poweredByHeader: false,
   generateEtags: false,
   webpack: (config, { dev, isServer }) => {

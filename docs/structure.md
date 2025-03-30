@@ -3,66 +3,87 @@
 ## Основные компоненты
 
 ### Лэйаут (`app/layout.tsx`)
-- Корневой шаблон приложения
-- Содержит инициализацию темы через Script
-- Метаданные сайта (SEO)
-- При изменении: обновите метаданные и структуру страницы
+- Корневой шаблон
+- Инициализация темы
+- SEO-метаданные
 
 ### Хедер (`app/components/Header.tsx`)
-- Навигационное меню
-- Переключатели темы и языка
-- Структура навигации в константе `navigationLinks`
-- При изменении: обновите также тесты в `Header.test.tsx`
+- Навигация и переключатели
+- Структура в `navigationLinks`
+- При изменении обновить `Header.test.tsx`
 
 ### Футер (`app/components/Footer.tsx`)
-- Навигация, контакты, информация о сайте
-- Структура навигации в константе `footerNav`
-- При изменении: обновите также тесты в `Footer.test.tsx`
+- Навигация и контакты
+- Структура в `footerNav`
+- При изменении обновить `Footer.test.tsx`
 
 ## Адаптивность
 
 ### Мобильное меню (`app/components/MobileMenu.tsx`)
-- Мобильная версия навигации
-- Активируется кнопкой в хедере
-- При изменении: синхронизируйте изменения с `Header.tsx`
+- Мобильная навигация
+- Синхронизировать с `Header.tsx`
 
 ## Темизация
 
 ### Переключатель темы
-- Клиентский компонент: `app/components/ThemeToggleButton.tsx`
-- Серверная обёртка: `app/components/ThemeToggle.tsx`
-- Утилиты для работы с темой: `app/lib/i18n.ts > getThemeFromRequestOrDefault`
-- При изменении: обновите скрипт инициализации в `layout.tsx`
+- Клиент: `app/components/ThemeToggleButton.tsx`
+- Сервер: `app/components/ThemeToggle.tsx`
+- Утилиты: `app/lib/i18n.ts > getThemeFromRequestOrDefault`
 
 ## Интернационализация (i18n)
 
-### Основные файлы
+### Файлы
 - Настройка: `next-i18next.config.js`
 - Утилиты: `app/lib/i18n.ts`
-- Локализации: `public/locales/{ru,en,sr}/common.json`
+- Локали: `public/locales/{ru,en,sr}/common.json`
 
 ### Переключатель языка
-- Клиентский компонент: `app/components/LanguageToggleButton.tsx`
-- Серверная обёртка: `app/components/LanguageToggle.tsx`
+- Клиент: `app/components/LanguageToggleButton.tsx`
+- Сервер: `app/components/LanguageToggle.tsx`
 
-### Процесс добавления переводов
-1. Добавьте ключи в файлы локализации для всех языков
-2. Используйте функцию `t("ключ")` в компонентах
-3. При добавлении новых текстов синхронизируйте все файлы локализации
+### Добавление переводов
+1. Добавить ключи во все локали
+2. Использовать `t("ключ")` в компонентах
+3. Синхронизировать все файлы локализации
 
 ## Иконки
-
-- Все SVG иконки: `app/components/Icons.tsx`
-- При добавлении: используйте атрибут `title` для доступности
+- SVG в `app/components/Icons.tsx`
+- Использовать `title` для доступности
 
 ## Ссылки
+- Редиректы: `next.config.js`
+- Утилиты: `app/components/AppLinks.tsx`
 
-- Настройки редиректов: `next.config.js`
-- Вспомогательные ссылки: `app/components/AppLinks.tsx`
+## Статичные файлы и .well-known
 
-## При внесении изменений
+### Директория `public`
+- Статичные файлы в корне проекта
+- Доступны по URL от корня (`/`)
 
-1. Структура навигации: `Header.tsx`, `Footer.tsx`, `MobileMenu.tsx`
-2. Переводы: все файлы в `public/locales/{ru,en,sr}/common.json`
-3. Страницы: страницы в директориях `app/**/page.tsx`
-4. Запустите тесты `npm test` после изменений 
+### Директория `.well-known`
+- Путь: `public/.well-known`
+- Доступ: `/.well-known/*`
+
+#### Stellar TOML
+- Файл: `public/.well-known/stellar.toml`
+- URL: `/.well-known/stellar.toml`
+- Заголовки в `next.config.js`:
+  ```javascript
+  async headers() {
+    return [
+      {
+        source: '/.well-known/stellar.toml',
+        headers: [
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Content-Type', value: 'text/plain' }
+        ],
+      },
+    ]
+  }
+  ```
+
+## При изменениях
+1. Навигация: обновить `Header.tsx`, `Footer.tsx`, `MobileMenu.tsx`
+2. Переводы: обновить все файлы в `public/locales/{ru,en,sr}/common.json`
+3. Страницы: редактировать `app/**/page.tsx`
+4. Запустить тесты: `npm test` 
