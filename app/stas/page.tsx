@@ -1,11 +1,8 @@
-import Header from "../components/Header";
 import AppLinks from "../components/AppLinks";
 
 export default function Stas() {
   return (
     <div className="container">
-      <Header />
-
       <section>
         <h1 className="text-3xl font-bold text-kamni-yellow mb-4">STAS</h1>
 

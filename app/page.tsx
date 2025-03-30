@@ -1,12 +1,9 @@
-import Header from "./components/Header";
 import PgpKey from "./components/PgpKey";
 import AppLinks from "./components/AppLinks";
 
 export default function Home() {
   return (
     <div className="container">
-      <Header />
-
       <section>
         <h1 className="text-3xl font-bold text-kamni-yellow mb-4">О Фонде</h1>
 

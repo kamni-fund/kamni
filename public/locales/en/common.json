@@ -1,0 +1,34 @@
+{
+  "header": {
+    "fund": "Family Fund",
+    "slogan": "GIVE US MONEY",
+    "navigation": {
+      "about": "About",
+      "tokens": "Tokens",
+      "stas": "STAS",
+      "proposals": "Proposals",
+      "verification": "Verification"
+    }
+  },
+  "footer": {
+    "description": "KAMNI Family Fund is engaged in accumulating funds for family members. In the future, verification in the Montelibero Association.",
+    "navigation": "Navigation",
+    "contacts": "Contacts",
+    "rights": "© {{year}} KAMNI Family Fund",
+    "privacy": "Privacy Policy"
+  },
+  "theme": {
+    "light": "Light theme",
+    "dark": "Dark theme"
+  },
+  "language": {
+    "ru": "Русский",
+    "en": "English",
+    "sr": "Српски",
+    "change": "Change language"
+  },
+  "meta": {
+    "title": "KAMNI - Family Fund",
+    "description": "KAMNI Family Fund is engaged in accumulating funds for family members"
+  }
+}
