@@ -13,11 +13,11 @@ export default function Verification() {
         </h2>
 
         <p className="mb-4">
-          Ассоциация Монтелиберо — это экстерриториальная контрактная юрисдикция внутри движения{" "}
-          <AppLinks.MonteliberoAssociation />. В отличие от движения, Ассоциация имеет фиксированное
-          членство, внутренние положения, разные степени верификации и рабочие группы по разным
-          проектам (Суды, Нотариат). Всё это фиксируется с помощью токенов на блокчейне Stellar.
-          Главным документов является <AppLinks.MonteliberoAgreement />.
+          <AppLinks.MonteliberoAssociation /> — это экстерриториальная контрактная юрисдикция внутри
+          движения . В отличие от движения, Ассоциация имеет фиксированное членство, внутренние
+          положения, разные степени верификации и рабочие группы по разным проектам (Суды,
+          Нотариат). Всё это фиксируется с помощью токенов на блокчейне Stellar. Главным документом
+          является <AppLinks.MonteliberoAgreement />.
         </p>
 
         <h2 className="text-2xl font-bold text-kamni-yellow mb-4">Зачем нужна верификация</h2>
@@ -72,7 +72,8 @@ export default function Verification() {
         <p className="mb-4">
           Далее вам необходимо будет произвести оплату верификации на адрес{" "}
           <span className="font-mono text-sm">
-            GD5GTXUSBYEKLN242J2QWPTPGRXXV7KKW4FP4YQPP5ZZQ3AA25HN1N3A
+            {" "}
+            GD5GTXUSBYEKLN242J2QWPTPGRXXV7KKW4FP4YQPP5ZZQ3AA25HNHN3A
           </span>
           . В ответ вы получите 4.2 XML как подтверждение верификации.
         </p>

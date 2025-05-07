@@ -3,7 +3,7 @@ import AppLinks from "./components/AppLinks";
 import CopyButton from "./components/CopyButton";
 import PgpKey from "./components/PgpKey";
 
-const STELLAR_ADDRESS = "GCUEVVS4KIHZM7DAHKXIRWSCN3V3Y4KX6UNNUU7PV73VQK44CNKAMNI";
+const STELLAR_ADDRESS = "GCUEVVS4KIHZM72DAHKXIRWSCN3V3Y4KX6UNNUU7PV73VQK44CNKAMNI";
 
 export default function Home() {
   return (
